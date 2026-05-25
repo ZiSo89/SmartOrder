@@ -1,0 +1,30 @@
+Thank you for purchasing our script.
+
+-----------------
+
+IF YOU WANT TO UPDATE THE OLD PHP VERSION THEN CHECK THE BELOW ARTICLE
+https://bylancer.com/docs/other/how-update-quickcms-php-version-quickcms-laravel-version
+
+-----------------
+
+IF YOU WANT TO UPDATE THE PREVIOUS VERSION THEN USE THE BELOW STEPS
+
+Step 1:- Please make a backup of your old files and database.
+Step 2:- Create a backup of the .env file and the lang folder (exists on the root/core folder). 
+
+.env file contains your database and system information and lang folder contains your language files. If you did not edit any language file then you can skip the lang folder.
+
+Step 3:- Upload the script.zip file on the server and extract on the root folder.
+Step 4:- After that, replace the .env file and lang folder with your backuped .env file and lang folder.
+Step 5:- Go to your-website.com/update page and follow the instructions for database update.
+Step 6:- Done.
+
+CHECK MORE DETAILS IN DOCUMENTATION OR CONTACT US FOR SUPPORT.
+
+
+SUPPORT: https://bylancer.ticksy.com/
+
+
+Thank you again,
+
+Bylancer
