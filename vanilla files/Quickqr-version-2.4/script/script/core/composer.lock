@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b32bb52d86a856eb94e6a800c3402aa",
+    "content-hash": "687748bad98e0917e01f49c8d9b46a33",
     "packages": [
         {
             "name": "2checkout/2checkout-php",
@@ -2915,25 +2915,25 @@
         },
         {
             "name": "mcamara/laravel-localization",
-            "version": "V1.8.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcamara/laravel-localization.git",
-                "reference": "9b1779a963c1779d1977d8ad0558a681608e3ec1"
+                "reference": "af91f489f518fb1907944de8622a19266159d28f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/9b1779a963c1779d1977d8ad0558a681608e3ec1",
-                "reference": "9b1779a963c1779d1977d8ad0558a681608e3ec1",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/af91f489f518fb1907944de8622a19266159d28f",
+                "reference": "af91f489f518fb1907944de8622a19266159d28f",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.2.0||~5.3.0||~5.4.0||~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0||^7.0||^8.0||^9.0|^10.0",
-                "php": ">=7.1.0"
+                "laravel/framework": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
             },
             "require-dev": {
-                "orchestra/testbench-browser-kit": "~3.4|~3.8|~4.0|^7.12",
-                "phpunit/phpunit": "6.0.*|^8.0|^9.5.10"
+                "orchestra/testbench-browser-kit": "^8.5|^9.0|^10.0",
+                "phpunit/phpunit": "^10.1|^11.0"
             },
             "suggest": {
                 "ext-intl": "*"
@@ -2941,12 +2941,12 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
-                    ],
                     "aliases": {
                         "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
-                    }
+                    },
+                    "providers": [
+                        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -2975,7 +2975,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mcamara/laravel-localization/issues",
-                "source": "https://github.com/mcamara/laravel-localization/tree/V1.8.0"
+                "source": "https://github.com/mcamara/laravel-localization/tree/v2.3.0"
             },
             "funding": [
                 {
@@ -2987,7 +2987,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-18T15:43:23+00:00"
+            "time": "2025-02-26T06:38:01+00:00"
         },
         {
             "name": "midtrans/midtrans-php",
@@ -11401,12 +11401,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
