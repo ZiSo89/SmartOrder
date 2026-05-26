@@ -6,10 +6,13 @@
     $(document).ready(function () {
         $("img.lazy-load").lazyload({
             effect: "fadeIn",
+            threshold: 500,
             load: function () {
                 $(this).removeClass('lazy-load');
             }
         });
+        // Force check for images already in viewport on page load
+        $(window).trigger('scroll');
 
         /*--------------------------------------------------*/
         /*  Sticky Header
