@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>QuickCMS Laravel Documentation</title>
+    <meta name="author" content="bylancer.com">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/skin-blue.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy">
+
+<div class="xdocs-pre-loader"></div>
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <ul class='social'>
+            <li><a target='_blank' href='https://bylancer.com/'><i class='fa fa-home'></i></a></li>
+            <li><a target='_blank' href='http://facebook.com/bylancer.in'><i class='fa fa-facebook'></i></a></li>
+            <li><a target='_blank' href='https://bylancer.ticksy.com/'><i class='fa fa-support'></i></a></li>
+        </ul>
+        <div class="logo">
+            <img src="assets/img/logo-1.png" alt=""/>
+        </div>
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <div class="sidebar" id="scrollspy">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="nav sidebar-menu">
+                <li class="active"><a href="#introduction">Introduction</a>
+                <li><a href="#Installing-Theme">Installation</a></li>
+                <li><a href="#upgrading-theme">Cron Job</a></li>
+                <li><a href="#social-login">Social Login</a>
+                    <ul class="nav treeview-menu">
+                        <li><a href="#facebook">Facebook</a></li>
+                        <li><a href="#google">Google</a></li>
+                    </ul>
+                </li>
+                <li><a href="#google-captcha">Google Captcha</a></li>
+                <li><a href="#settings">Settings</a>
+                    <ul class="nav treeview-menu">
+                        <li><a href="#general">General Settings</a></li>
+                        <li><a href="#logo-favicon">Logo & Favicon</a></li>
+                        <li><a href="#smtp">Email SMTP Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="#custom-theme">Custom Theme</a></li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <div class="content body">
+            <!-- Introduction Section -------------------------------------------------------------->
+            <section id="introduction">
+                <div class='section-content'>
+                    <div class="content-header">
+                        <h1>QuickQR Pro Laravel CMS Documentation</h1>
+                        <div class="version"> Version 1.0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="assets/screenshot/quick-main.jpg" alt="" style="border: 1px solid #333;">
+                        </div>
+                        <div class="col-sm-6">
+                            <h1>Welcome</h1>
+                            <p>Thank you for purchasing <a
+                                    href="https://codecanyon.net/item/quickqr-contactless-restaurant-qr-menu-maker/29012439"
+                                    target="_blank">QuickQR Pro Laravel CMS</a>. We covered almost everything in this
+                                document that how easily you can setup this script. If you have any questions that are
+                                beyond the scope of this help file, please feel free to use the free support forums.
+                            <p><b>Author</b> : <a href="https://bylancer.com/" target="_blank">Bylancer.com</a></p>
+                            <p><b>Demo</b> : <a href="https://quickqr.by-code.com/" target="_blank">QuickQR
+                                Demo</a></p>
+                            <p><b>Support</b> : <a href="https://bylancer.ticksy.com/" target="_blank">https://bylancer.ticksy.com/</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installing Theme -------------------------------------------------------------->
+            <section id="Installing-Theme" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class='page-header'><a href='#Installing-Theme' class='header-link'><i
+                            class='fa fa-link'></i></a>Installing QuickQR</h2>
+
+                    <h2 id="installation"><a href="#installation">Installation</a></h2>
+                    <div class="mb-12">
+                        <h3 class="steps-header">Creating the database</h3>
+
+                        <ol class="list-decimal pl-6 mb-4">
+                            <li class="mb-1">Create a new MySQL database.</li>
+                            <li class="mb-1">Create a new MySQL username and password.</li>
+                            <li class="mb-1">Assign full privileges to your database username.</li>
+                        </ol>
+
+                        <div class="text-sm">
+                            <div>Useful resources</div>
+                            <div><a href="https://docs.cpanel.net/cpanel/databases/mysql-database-wizard/"
+                                    target="_blank" rel="nofollow">cPanel - MySQL database wizard</a></div>
+                            <div><a href="https://docs.plesk.com/en-US/obsidian/customer-guide/website-databases.69535/"
+                                    target="_blank" rel="nofollow">Plesk - Website databases</a></div>
+                        </div>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="steps-header">Uploading the files</h3>
+                        <blockquote>
+                            <p>Before starting to upload the files, please make sure your file explorer has the option
+                                to view hidden files turned on. On some operating systems, the dotfiles are hidden by
+                                default.</p>
+                        </blockquote>
+
+                        <p class="mb-4">Upload the <code>script.zip</code> file on the web root folder of your domain
+                            and extract. This folder is generally called <code>public_html</code>, <code>html</code>, or
+                            <code>example.com</code>, but depending on your server's configuration, it might be named
+                            differently.</p>
+
+                        <div class="text-sm">
+                            <div>Useful resources</div>
+                            <div><a href="https://docs.cpanel.net/cpanel/files/file-manager/#overview" target="_blank"
+                                    rel="nofollow">cPanel - File Manager</a></div>
+                            <div>
+                                <a href="http://docs.plesk.com/en-US/12.5/customer-guide/websites-and-domains/website-content/uploading-content-with-file-manager.74105/"
+                                   target="_blank" rel="nofollow">Plesk - Uploading content with File Manager</a></div>
+                        </div>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="steps-header">Requirements</h3>
+
+                        <div>Before install, Your server must match following requirements to run the script properly
+                        </div>
+                        <ul class="list-disc pl-6">
+                            <li><strong>Server Requirements</strong>
+                                <ul class="list-disc pl-6" style="margin-bottom: 10px">
+                                    <li>PHP 8.2x</li>
+                                    <li>MySql: 5.7+</li>
+                                </ul>
+                            </li>
+                            <li><strong>Required Upgrades</strong>
+                                <ul class="list-disc pl-6" style="margin-bottom: 10px">
+                                    <li>allow_url_fopen = on</li>
+                                    <li>max_execution_time = 600</li>
+                                    <li>max_input_time = 600</li>
+                                    <li>post_max_size = 1G</li>
+                                    <li>memory_limit = 1024M</li>
+                                    <li>upload_max_filesize = 1G</li>
+                                </ul>
+                            </li>
+                            <li><strong>PHP Extensions</strong>
+                                <ul class="list-disc pl-6" style="margin-bottom: 10px">
+                                    <li>BCMath</li>
+                                    <li>Ctype</li>
+                                    <li>Fileinfo</li>
+                                    <li>JSON</li>
+                                    <li>Mbstring</li>
+                                    <li>OpenSSL</li>
+                                    <li>PDO</li>
+                                    <li>pdo_mysql</li>
+                                    <li>Tokenizer</li>
+                                    <li>XML</li>
+                                    <li>cURL</li>
+                                    <li>zip</li>
+                                    <li>GD</li>
+                                    <li>iconv</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>Please consider that some other php setting values might be required.</p>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="steps-header">File and folder permissions</h3>
+                        <p>Set the access permissions (CHMOD) to 775 to the following files and folders:</p>
+                        <ul class="list-disc mb-4">
+                            <li class="mb-1"><strong>Files</strong>
+                                <ul class="list-disc pl-6" style="margin-bottom: 10px">
+                                    <li class="mb-1">core/.env</li>
+                                </ul>
+                            </li>
+
+                            <li class="mb-1"><strong>Folders</strong>
+                                <ul class="list-disc pl-6" style="margin-bottom: 10px">
+                                    <li class="mb-1">storage</li>
+                                    <li class="mb-1">core/bootstrap/cache</li>
+                                    <li class="mb-1">core/lang</li>
+                                    <li class="mb-1">core/plugins</li>
+                                    <li class="mb-1">core/storage</li>
+                                    <li class="mb-1">core/storage/framework/</li>
+                                    <li class="mb-1">core/storage/framework/cache</li>
+                                    <li class="mb-1">core/storage/framework/cache/data</li>
+                                    <li class="mb-1">core/storage/framework/sessions</li>
+                                    <li class="mb-1">core/storage/framework/views</li>
+                                    <li class="mb-1">core/storage/logs</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="steps-header">Finishing the installation</h3>
+                        <ol class="list-decimal pl-6 mb-4">
+                            <li class="mb-1">Go to <code
+                                    class="inline-block text-xs px-1 py-0.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-bold rounded">https://example.com/install</code>
+                                and follow the installation wizard to complete the installation.
+                            </li>
+                            <li>You need to enter your purchase code in the installation process. <a
+                                    href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-"
+                                    target="_blank" rel="nofollow">Find here</a></li>
+
+                            <li class="mb-1">After you've installed the software, login into your user account.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upgrading-theme -------------------------------------------------------------->
+            <section id="upgrading-theme" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class="page-header"><a href="#upgrading-theme" class="header-link"><i
+                            class="fa fa-link"></i></a>Cron Job</h2>
+
+                    <div class="article-group mb-0">
+                        <div class="alert alert-primary">
+                            <h6>The software requires a cron job task to be set up on your server in order to automate
+                                some of its functions.</h6>
+                            <ul class="mb-3">
+                                <li class="mb-1">Cron : <code>* * * * *</code></li>
+                                <li>Change <code>your-website.com</code> to your website url</li>
+                            </ul>
+                            <div>
+                                <pre><code class="language-cmd">wget -q -O /dev/null https://your-website.com/cronjob</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--------------------
+            --- social-login ---
+            --------------------->
+            <section id="social-login" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class='page-header'><a href='#social-login' class='header-link'><i class='fa fa-link'></i></a>Social
+                        Login</h2>
+
+                    <h3 class='steps-header'><a href='#facebook'>Facebook</a></h3>
+                    <div id='facebook' class='step-content clearfix pb-5'>
+                        <p>To enable Facebook Login you just need Facebook App ID and App Secret.</p>
+                        <p>This is a how to getting Facebook App ID and App Secret. Check this link.<br>
+                            <a href="https://www.youtube.com/watch?v=-XME8Q25omQ&amp;ab_channel=MatthewMcDonald"
+                               target="_blank">How To Setup A Facebook App And Get App ID And Secret</a>
+                        </p>
+                    </div>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/quick-facebook-login.png"
+                            alt="gmap" width="1280" height="869"/></p>
+
+                    <div id='google' class='step-content clearfix'>
+                        <h3 class='steps-header'><a href='#google'>Google</a></h3>
+                        <p>To enable Google Login you just need Google App ID and App Secret.</p>
+                        <p>This is a How to Create Google Developers Console Project. Check this link.<br>
+                            <a href="https://www.codexworld.com/create-google-developers-console-project/"
+                               target="_blank">How to Create Google Developers Console Project</a>
+                        </p>
+                        <blockquote>Note : copy redirect url from Your QuickQR admin > Setting > Social login setting
+                            <img class="size-full wp-image-124 alignnone" src="assets/screenshot/quick-google-login.png"
+                                 alt="social-login-redirecturl" width="1280" height="898"/>
+                        </blockquote>
+                    </div>
+
+
+                    <p>After getting App Id and App Secret, you have to setup your admin panel:</p>
+                    <ul>
+                        <li>Go to your <strong>Admin panel</strong> -&gt; <strong>Setting</strong> -&gt; <strong>Site
+                            Setting</strong> -&gt; <strong>Social Login Setting</strong></li>
+                        <li>For Facebook: set '<strong>Facebook App ID</strong>' and '<strong>Facebook App
+                            Secret</strong>'
+                        </li>
+                        <li>For Google: set '<strong>Google app ID</strong>' and '<strong>Google app Secret</strong>'
+                        </li>
+                        <li>And save your changes.</li>
+                    </ul>
+                </div>
+            </section>
+            <!--------------------
+            --- google-captcha ---
+            --------------------->
+            <section id="google-captcha" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class='page-header'><a href='#google-captcha' class='header-link'><i class='fa fa-link'></i></a>Google
+                        Captcha</h2>
+                    <strong>How to setup.</strong><br>
+
+                    <h3>Google ReCaptcha Configuration</h3>
+                    <ol>
+                        <li><a href="https://www.google.com/recaptcha/admin/create" target="_blank">Go to the Google
+                            reCAPTCHA and register a new site.</a></li>
+                        <li>Enter label and select "reCAPTCHA v2" -&gt; "I'm not a robot" Checkbox in reCAPTCHA type
+                            field.
+                        </li>
+                        <li>Enter your domain url.</li>
+                        <li>Accept Terms of Service and click on the Submit button.</li>
+                        <li>Look for the Site Key and Secret Key. Use them in the form below on this page.</li>
+                    </ol>
+
+                    <ul>
+                        <li>Visit <a href="https://www.google.com/recaptcha/admin" target="_blank">https://www.google.com/recaptcha/admin</a>
+                        </li>
+                        <li>Follow as given in below image</li>
+                    </ul>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/google-captcha1.png"
+                            alt="gmap" width="1280" height="869"/></p>
+                    <ul>
+                        <li>Click on <strong>Register</strong></li>
+                        <li>You will now get your <strong>site key</strong> and <strong>secret key</strong></li>
+                    </ul>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/google-captcha2.png"
+                            alt="gmap" width="1280" height="869"/></p>
+
+                    <p><strong>Admin panel setup</strong></p>
+                    <ul>
+                        <li>Go to your&nbsp;<strong>Admin panel</strong>&nbsp;-&gt;&nbsp;<strong>Site Setting</strong> -&gt;
+                            <strong>Google reCAPTCHA tab</strong></li>
+                        <li>Enable reCaptcha</li>
+                        <li>Add reCaptcha Site key (Public Key) and Secret key (Private key)‘</li>
+                        <li>And save your changes.</li>
+                    </ul>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/quick-google-captcha.png"
+                            alt="gmap" width="1280" height="869"/></p>
+                </div>
+            </section>
+
+            <!--------------------
+            --- settings ---
+            --------------------->
+            <section id="settings" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class='page-header'><a href='#social-login' class='header-link'><i class='fa fa-link'></i></a>Settings
+                    </h2>
+                    <!--General Settings-->
+                    <h3 class='steps-header'><a href='#general'>General Settings</a></h3>
+                    <div id='general' class='step-content clearfix pb-5'>
+                        <ul>
+                            <li>Go to your <strong>Admin panel</strong> -&gt; <strong>Setting</strong> -&gt; <strong>General
+                                Setting</strong></li>
+                            <li>And Save your changes.</li>
+                        </ul>
+                    </div>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/quick-general-setting.png"
+                            alt="gmap" width="1280" height="869"/></p>
+                    <!--Logo Settings-->
+                    <h3 class='steps-header'><a href='#logo-favicon'>Logo Settings</a></h3>
+                    <div id='logo-favicon' class='step-content clearfix pb-5'>
+                        <ul>
+                            <li>Go to your <strong>Admin panel</strong> -&gt; <strong>Setting</strong> -&gt; <strong>Logo
+                                & Favicon</strong></li>
+                            <li>And Save your changes.</li>
+                        </ul>
+                    </div>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/quick-logo-setting.png"
+                            alt="gmap" width="1280" height="869"/></p>
+                    <!--SMTP Settings-->
+                    <h3 class='steps-header'><a href='#logo-favicon'>Email Settings</a></h3>
+                    <div id='smtp' class='step-content clearfix pb-5'>
+                        <ul>
+                            <li>Go to your <strong>Admin panel</strong> -&gt; <strong>Setting</strong> -&gt; <strong>SMTP</strong>
+                            </li>
+                            <li>And Save your changes.</li>
+                        </ul>
+                    </div>
+                    <p><img class="aligncenter size-full wp-image-288" src="assets/screenshot/quick-smtp-setting.png"
+                            alt="gmap" width="1280" height="869"/></p>
+
+
+                </div>
+            </section>
+
+            <section id="custom-theme" class="stickem-container">
+                <div class='section-content'>
+                    <h2 class='page-header'><a href='#custom-theme' class='header-link'><i class='fa fa-link'></i></a>Custom
+                        Theme</h2>
+                    <p>You can create your custom theme with our CMS.</p>
+                    <p>There are mainly two folders.</p>
+                    <p>1. <strong>public/templates/{theme-name}:&nbsp;</strong>Static assets are usually stored in the
+                        <em>public</em> folder in Laravel. You can create a new folder with your theme name to store all
+                        the theme assets (CSS, JS, and images). For the preview image of your theme, you need to add a
+                        <em>preview.jpg</em> file here.</p>
+                    <p>2. <strong>resources/views/templates/{theme-name}:</strong> Views contain the HTML served by all
+                        the theme pages. <strong>&nbsp;</strong>All the view files will be stored here. You can create a
+                        new folder with your theme name to store the view files here. For a quick start, just copy the
+                        default (classic) theme, paste it, and rename the folder name with your theme name. And now edit
+                        all the files inside this folder to change your theme.&nbsp;</p>
+                    <a href="https://bylancer.ticksy.com/article/19913/" target="_blank">For more details click
+                        here.</a>
+                </div>
+            </section>
+
+            <!-- Manage-Customfield -------------------------------------------------------------->
+            <section id="Manage-seller-at" class="stickem-container">
+                <div class='section-content'>
+                    <h2>About Company</h2>
+                    <p>Who we are? We are top leading web development and designing company founded in 2013. The company
+                        develops and improves professional websites for customers across a wide range of industries and
+                        the main service area we are selling our top branded digital products like php scripts, premium
+                        worpdress themes & plugins and free items also. We are seller at <a
+                                href="https://codecanyon.net/user/bylancer" target="_blank">Codecanyon</a> and <a
+                                href="https://themeforest.net/user/bylancer" target="_blank">Themeforest</a>. </p>
+                </div>
+            </section>
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+
+        <div class="pull-right hidden-xs">
+            <div class="version"> Version 1.0</div>
+        </div>
+
+        <div class="copyrights">Copyright © 2024 <a href="https://bylancer.com" target="_blank">Bylancer.com</a>. All
+            rights reserved.
+        </div>
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<script type="text/javascript" src="assets/js/jQuery-2.2.0.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/js/jquery.stickem.js"></script>
+<script type="text/javascript" src="assets/js/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="assets/js/prism.js"></script>
+<script type="text/javascript" src="assets/js/docs.js"></script>
+</body>
+
+</html>
+

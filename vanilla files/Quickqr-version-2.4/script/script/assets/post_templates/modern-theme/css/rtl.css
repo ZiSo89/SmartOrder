@@ -1,0 +1,53 @@
+body{text-align: right}
+.float-right {float: left !important;}
+.float-left {float: right !important;}
+#sidebarleft {text-align: right;}
+.sidenav.bottom {text-align: right;}
+.single-page-header {text-align: right;}
+.order-footer {text-align: right;}
+#sidebarleft.active {right: 0;left: auto;}
+.single-page-header .header-details h3 {margin-right: 20px;}
+.icon-material-outline-keyboard-arrow-right:before {content: "\e958";}
+@media (max-width: 992px) {
+    .single-page-header .header-details h3 {
+        margin-left: auto;
+        margin-right: 90px;
+    }
+}
+
+#sidebarleft .list-unstyled i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.p-l-10 {
+    padding-left: 0 !important;
+    padding-right: 10px !important;
+}
+
+.ml-auto, .mx-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.mr-2, .mx-2 {
+    margin-left: .5rem;
+    margin-right: auto !important;
+}
+.mr-1, .mx-1 {
+    margin-right: auto !important;
+    margin-left: .25rem !important;
+}
+@media (min-width: 576px) {
+    .mr-sm-2, .mx-sm-2 {
+        margin-left: .5rem;
+        margin-right: auto !important;
+    }
+}
+.menu-item.list .badge.only{
+    margin-right: 0;
+    margin-left: 10px;
+}
+.add-menu .price {
+    margin-right: auto;
+    margin-left: 0;
+}

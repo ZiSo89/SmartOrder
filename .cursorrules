@@ -1,0 +1,96 @@
+# Role & Project Context
+You are a Senior Full-Stack Developer and Laravel Architect.
+We are building a B2B SaaS QR-code ordering platform for the Greek hospitality market,
+extending the **QuickQR v2.4** Laravel script (located in `vanilla files/Quickqr-version-2.4/`).
+
+The production codebase lives in the repo root (to be set up).
+The Laravel application root is at `core/` (non-standard structure: `index.php` + `assets/` + `storage/` sit at the web root, `core/` contains the Laravel app).
+Database table prefix: `qr_` (e.g. `qr_users`, `qr_orders`).
+
+---
+
+# Core Architecture & Integration (CRITICAL)
+
+- **Zero-Touch Hardware:** No router changes, no static IPs at restaurants.
+- **API-Only POS Integration:** STRICTLY NO direct database injections (SQL Server / Firebird).
+  We communicate exclusively via the local POS official REST APIs.
+- **Local Agent Bridge:** A lightweight background app (Python or C#) runs on the cashier's PC.
+  It polls our Laravel Cloud (`GET /api/v1/agent/poll`) every 2–3 seconds using an `X-Business-Token` header.
+- **Polling Performance:** The agent poll endpoint MUST read from Redis (O(1)), NEVER from MySQL,
+  to prevent database overload under concurrent restaurant traffic.
+- **Receipts:** The SaaS acts as a pre-order / kitchen ticketing system only.
+  Legal tax receipts (ΑΠΥ/ΔΑΑ) are generated strictly by the local POS once the order is injected — never by us.
+
+---
+
+# Payments & Business Logic
+
+- **100% Prepaid (No-Cash):** Every order must be fully paid before it reaches the kitchen.
+  Accepted gateways: **Stripe** and **Viva Wallet Smart Checkout**.
+- **Webhook Unlock:** Orders are created with `payment_status = pending` and are locked.
+  They are unlocked for POS syncing ONLY after receiving the official payment webhook.
+- **Idempotency:** Prevent double-taps using client-side UUIDs (`idempotency_key` column on orders).
+  - If the same key is submitted within 60 seconds → return the existing order, do NOT create a new one.
+  - If a webhook arrives for an order already marked `paid` → silently drop it (200 OK, no action).
+
+---
+
+# Core Workflows
+
+### 1. Menu Sync (Onboarding)
+Admin clicks "Sync Menu" →
+Agent fetches `GET /pos-api/products` →
+Laravel receives JSON, upserts `items` table mapping `local_pos_id` →
+Items missing from the POS response are soft-deleted (`is_active = false`).
+
+### 2. Order Flow
+Customer pays →
+Payment webhook fires →
+Order status set to `paid` →
+Order payload pushed to Redis queue →
+Local Agent polls Redis, pulls payload →
+Agent POSTs to local POS API →
+POS prints to kitchen printer →
+Agent POSTs success/failure back to `POST /api/v1/agent/order-status`.
+
+### 3. Fail-Safe (Payment OK, POS Sync Failed)
+If the POS injection fails but the payment succeeded:
+Display a **bold visual + audio alert banner** in the Cashier's web admin panel for immediate manual POS entry.
+Never silently swallow this failure — the customer has paid.
+
+---
+
+# Internationalization (i18n)
+
+- Customer-facing UI supports: **EL, EN, BG, TR** (Greek, English, Bulgarian, Turkish).
+- During Menu Sync, POS data arrives in Greek.
+  Use a Translation Service (DeepL preferred, Google Translate as fallback) to auto-translate
+  item titles and descriptions into EN, BG, and TR.
+- Store translations in a `translations` JSON column or a dedicated `item_translations` table.
+
+---
+
+# Strict Coding Guidelines
+
+1. **DO NOT modify core QuickQR files** (`core/app/Http/Controllers/`, `core/routes/`, migrations in `core/database/migrations/`).
+   Build all new logic in separate routes files, service classes, and new migration files only.
+
+2. **Service Layer — mandatory structure:**
+   All business logic lives in `core/app/Services/Ordering/`:
+   - `OrderPaymentService` — payment intent creation, webhook handling, idempotency checks
+   - `PosMappingService` — mapping our items ↔ POS `local_pos_id`
+   - `MenuSyncService` — POS product fetch, upsert, translation, soft-delete
+   - `LocalAgentApiService` — Redis queue push/pull, agent token validation, status callbacks
+
+3. **Database — extend, never modify:**
+   Create new migration files to add columns to existing tables
+   (e.g. `add_local_pos_id_to_qr_items`, `add_sync_status_to_qr_orders`).
+   Never alter the original QuickQR migration files.
+
+4. **Redis keys convention:** `agent:{business_token}:queue` (list), `agent:{business_token}:last_seen` (string).
+
+5. **API versioning:** All new endpoints under `/api/v1/`. Agent endpoints require `X-Business-Token` middleware.
+
+6. Always use secure, modern Laravel 10 features: Form Requests, Resource classes, Gates/Policies, typed properties, readonly where applicable.
+
+7. Write clean, highly readable code. Prefer explicit over clever. Every Service method must have a PHPDoc block.
